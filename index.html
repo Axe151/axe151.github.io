@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Axel Dehan — Portfolio BTS SIO SISR</title>
+<meta name="description" content="Portfolio d'Axel Dehan, étudiant en BTS SIO option SISR.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0d1117;
+    --bg-2:#131a24;
+    --card:#18212e;
+    --line:#263244;
+    --text:#e8edf4;
+    --muted:#8b98ab;
+    --accent:#ff7a45;      /* orange corail */
+    --accent-2:#2dd4bf;    /* turquoise */
+    --accent-3:#a78bfa;    /* lavande */
+    --radius:14px;
+    --mono:'JetBrains Mono', ui-monospace, monospace;
+    --sans:'Space Grotesk', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6;
+    background-image:radial-gradient(circle at 85% -10%, rgba(255,122,69,.13), transparent 40%),
+                     radial-gradient(circle at -10% 40%, rgba(45,212,191,.08), transparent 35%);}
+  a{color:inherit}
+  .skip{position:absolute;left:-999px;top:0;background:var(--accent);color:#111;padding:.5rem 1rem;z-index:99}
+  .skip:focus{left:1rem}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+
+  /* NAV */
+  header.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(13,17,23,.78);border-bottom:1px solid var(--line)}
+  header.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:var(--mono);font-weight:600;text-decoration:none;font-size:1rem}
+  .logo span{color:var(--accent)}
+  nav ul{display:flex;gap:1.6rem;list-style:none}
+  nav a{text-decoration:none;color:var(--muted);font-size:.95rem;transition:color .2s}
+  nav a:hover{color:var(--text)}
+  .burger{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:.35rem .6rem;font-family:var(--mono);cursor:pointer}
+
+  /* HERO */
+  .hero{padding:5.5rem 0 4rem;display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center}
+  .tag{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.8rem;color:var(--accent-2);border:1px solid rgba(45,212,191,.35);background:rgba(45,212,191,.07);padding:.3rem .75rem;border-radius:99px}
+  .tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 10px var(--accent-2)}
+  h1{font-size:clamp(2.4rem,5.5vw,3.8rem);line-height:1.05;margin:1.1rem 0 .8rem;letter-spacing:-.02em}
+  h1 .hl{background:linear-gradient(90deg,var(--accent),#ffb347);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{color:var(--muted);font-size:1.1rem;max-width:34rem}
+  .btns{display:flex;gap:.8rem;margin-top:1.8rem;flex-wrap:wrap}
+  .btn{text-decoration:none;padding:.75rem 1.3rem;border-radius:10px;font-weight:500;transition:transform .15s, box-shadow .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.primary{background:var(--accent);color:#14100d;box-shadow:0 6px 24px rgba(255,122,69,.3)}
+  .btn.ghost{border:1px solid var(--line);background:var(--bg-2)}
+
+  /* Terminal */
+  .term{background:#0a0e14;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.45);font-family:var(--mono);font-size:.82rem}
+  .term-bar{display:flex;gap:.45rem;padding:.7rem .9rem;background:#111722;border-bottom:1px solid var(--line);align-items:center}
+  .term-bar i{width:11px;height:11px;border-radius:50%;display:block}
+  .term-bar i:nth-child(1){background:#ff5f57}.term-bar i:nth-child(2){background:#febc2e}.term-bar i:nth-child(3){background:#28c840}
+  .term-bar span{margin-left:auto;color:var(--muted);font-size:.72rem}
+  .term-body{padding:1.1rem 1.2rem;min-height:300px;white-space:pre-wrap}
+  .p{color:var(--accent-2)} .c{color:var(--accent)} .m{color:var(--muted)} .v{color:var(--accent-3)}
+  .cursor{display:inline-block;width:8px;height:1em;background:var(--accent);vertical-align:-2px;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+
+  /* SECTIONS */
+  section{padding:4.5rem 0;scroll-margin-top:60px}
+  .sec-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:2rem;flex-wrap:wrap}
+  .sec-num{font-family:var(--mono);color:var(--accent);font-size:.9rem}
+  h2{font-size:clamp(1.7rem,3vw,2.2rem);letter-spacing:-.01em}
+  .sec-head p{color:var(--muted);flex-basis:100%}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem}
+  .todo{color:var(--accent);font-family:var(--mono);font-size:.8rem;background:rgba(255,122,69,.1);border:1px dashed rgba(255,122,69,.45);padding:.05rem .4rem;border-radius:6px}
+
+  /* CV */
+  .cv-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:1.4rem}
+  .tl{list-style:none;position:relative;padding-left:1.4rem}
+  .tl::before{content:"";position:absolute;left:4px;top:.4rem;bottom:.4rem;width:2px;background:linear-gradient(var(--accent),var(--accent-2))}
+  .tl li{position:relative;margin-bottom:1.2rem}
+  .tl li::before{content:"";position:absolute;left:-1.4rem;top:.45rem;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+  .tl .date{font-family:var(--mono);font-size:.78rem;color:var(--accent-2)}
+  .tl h4{font-size:1.02rem}
+  .tl p{color:var(--muted);font-size:.92rem}
+  h3{font-size:1.05rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+  h3::before{content:"#";color:var(--accent);font-family:var(--mono)}
+  .chips{display:flex;flex-wrap:wrap;gap:.45rem}
+  .chip{font-family:var(--mono);font-size:.76rem;padding:.3rem .65rem;border-radius:8px;background:var(--bg-2);border:1px solid var(--line)}
+  .stack{display:grid;gap:1.4rem}
+
+  /* REALISATIONS */
+  .filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+  .filters button{font-family:var(--mono);font-size:.8rem;background:var(--bg-2);color:var(--muted);border:1px solid var(--line);padding:.45rem .85rem;border-radius:99px;cursor:pointer;transition:all .2s}
+  .filters button.on,.filters button:hover{color:#14100d;background:var(--accent-2);border-color:var(--accent-2)}
+  .projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem}
+  .proj{display:flex;flex-direction:column;gap:.7rem;transition:transform .2s,border-color .2s}
+  .proj:hover{transform:translateY(-4px);border-color:var(--accent)}
+  .proj .cat{font-family:var(--mono);font-size:.72rem;color:var(--accent-3);text-transform:uppercase;letter-spacing:.06em}
+  .proj h4{font-size:1.1rem}
+  .proj p{color:var(--muted);font-size:.92rem;flex:1}
+  .e5{display:flex;gap:.35rem;flex-wrap:wrap}
+  .e5 span{font-family:var(--mono);font-size:.7rem;padding:.15rem .5rem;border-radius:6px;background:rgba(255,122,69,.12);color:var(--accent)}
+  .proj a.more{font-size:.88rem;color:var(--accent-2);text-decoration:none}
+  .proj.hide{display:none}
+
+  /* VEILLE */
+  .veille-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+  .axe{font-family:var(--mono);font-size:.72rem;color:var(--accent-2)}
+  .veille-grid .card h4{margin:.4rem 0}
+  .veille-grid .card p{color:var(--muted);font-size:.9rem}
+  .veille-grid time{font-family:var(--mono);font-size:.75rem;color:var(--muted);display:block;margin-top:.6rem}
+  .veille-grid time a{color:var(--accent-2)}
+  .vitem{transition:border-color .2s}.vitem:hover{border-color:var(--accent-2)}
+
+  /* CERTIFS */
+  .certs{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+  .cert{text-align:center}
+  .cert .ico{width:52px;height:52px;margin:0 auto .8rem;border-radius:12px;display:grid;place-items:center;font-family:var(--mono);font-weight:600;background:linear-gradient(135deg,rgba(255,122,69,.2),rgba(167,139,250,.2));border:1px solid var(--line)}
+  .cert p{color:var(--muted);font-size:.85rem}
+
+  /* CONTACT */
+  .contact{display:grid;grid-template-columns:1.2fr 1fr;gap:1.4rem;align-items:stretch}
+  .contact .big{font-size:1.5rem;font-weight:700;margin:.4rem 0 1rem}
+  .contact dl{display:grid;grid-template-columns:auto 1fr;gap:.6rem 1rem;font-size:.95rem}
+  .contact dt{font-family:var(--mono);color:var(--accent-2);font-size:.82rem;padding-top:.15rem}
+  footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-size:.85rem;font-family:var(--mono)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:860px){
+    .hero,.cv-grid,.contact{grid-template-columns:1fr}
+    .veille-grid{grid-template-columns:1fr}
+    .certs{grid-template-columns:repeat(2,1fr)}
+    nav ul{display:none;position:absolute;top:64px;right:1rem;flex-direction:column;background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:1rem 1.4rem;gap:.9rem}
+    nav ul.open{display:flex}
+    .burger{display:block}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="#top" class="logo">axel<span>@</span>dehan<span>:~$</span></a>
+    <nav aria-label="Navigation principale">
+      <button class="burger" aria-expanded="false" aria-controls="menu">menu</button>
+      <ul id="menu">
+        <li><a href="#cv">CV</a></li>
+        <li><a href="#realisations">Réalisations</a></li>
+        <li><a href="#veille">Veille</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <div class="wrap" id="top">
+    <div class="hero">
+      <div>
+        <span class="tag">Disponible pour une alternance / un stage</span>
+        <h1>Axel <span class="hl">Dehan</span></h1>
+        <p class="lead">Étudiant en 2<sup>e</sup> année de BTS SIO, option SISR (Solutions d'Infrastructure, Systèmes et Réseaux). Je me spécialise dans l'administration systèmes, les réseaux et la cybersécurité.</p>
+        <div class="btns">
+          <a class="btn primary" href="#cv">Voir mon CV</a>
+          <a class="btn ghost" href="#realisations">Mes réalisations</a>
+        </div>
+      </div>
+
+      <div class="term" aria-label="Terminal de présentation">
+        <div class="term-bar"><i></i><i></i><i></i><span>bash — axel@portfolio</span></div>
+        <div class="term-body" id="term" aria-live="off"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CV -->
+  <section id="cv">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">01.</span><h2>Curriculum vitæ</h2>
+      </div>
+      <div class="cv-grid">
+        <div class="stack">
+          <div class="card reveal">
+            <h3>Formation</h3>
+            <ul class="tl">
+              <li><span class="date">2025 — 2027</span><h4>BTS SIO — option SISR</h4><p><span class="todo">Établissement, ville</span></p></li>
+              <li><span class="date"><span class="todo">Année</span></span><h4><span class="todo">Baccalauréat …</span></h4><p><span class="todo">Lycée, ville</span></p></li>
+            </ul>
+          </div>
+          <div class="card reveal">
+            <h3>Expérience professionnelle</h3>
+            <ul class="tl">
+              <li><span class="date">Janvier 2027 · à venir</span><h4>Stage de 2<sup>e</sup> année — Micro Technique</h4><p><span class="todo">Missions prévues</span></p></li>
+              <li><span class="date">2026 · <span class="todo">mois</span></span><h4>Stage de 1<sup>re</sup> année — Autoliv</h4><p><span class="todo">Missions réalisées : réseau, support, …</span></p></li>
+            </ul>
+          </div>
+        </div>
+        <div class="stack">
+          <div class="card reveal">
+            <h3>Compétences techniques</h3>
+            <div class="chips">
+              <span class="chip">Windows Server</span><span class="chip">Linux (Debian)</span><span class="chip">Active Directory</span>
+              <span class="chip">DHCP / DNS</span><span class="chip">VLAN / routage</span><span class="chip">Cisco Packet Tracer</span>
+              <span class="chip">PowerShell</span><span class="chip">Bash</span><span class="chip">Virtualisation</span>
+              <span class="chip">SQL</span><span class="chip">HTML / CSS</span><span class="chip">Git</span>
+            </div>
+          </div>
+          <div class="card reveal">
+            <h3>Langues</h3>
+            <div class="chips"><span class="chip">Français — natif</span><span class="chip">Anglais — <span class="todo">niveau</span></span></div>
+          </div>
+          <div class="card reveal">
+            <h3>Qualités</h3>
+            <div class="chips"><span class="chip">Autonome</span><span class="chip">Curieux</span><span class="chip">Esprit entrepreneur</span><span class="chip">Rigoureux</span></div>
+          </div>
+          <div class="card reveal">
+            <h3>Centres d'intérêt</h3>
+            <div class="chips"><span class="chip">SaaS &amp; entrepreneuriat</span><span class="chip">Hardware / PC</span><span class="chip"><span class="todo">Autre</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REALISATIONS -->
+  <section id="realisations">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">02.</span><h2>Réalisations</h2>
+        <p>Mes projets, classés par domaine, avec les compétences du référentiel E5 qu'ils couvrent.</p>
+      </div>
+      <div class="filters reveal" role="group" aria-label="Filtrer les réalisations">
+        <button class="on" data-f="all">Tout</button>
+        <button data-f="reseau">Réseaux &amp; systèmes</button>
+        <button data-f="bdd">Bases de données</button>
+        <button data-f="web">Projets web</button>
+        <button data-f="pro">Milieu pro</button>
+      </div>
+      <div class="projects">
+        <article class="card proj reveal" data-c="reseau">
+          <span class="cat">Réseaux &amp; systèmes</span>
+          <h4>Infrastructure Active Directory</h4>
+          <p>Déploiement d'un contrôleur de domaine, création des OU, utilisateurs et GPO.</p>
+          <div class="e5"><span>Gérer le patrimoine</span><span>Mettre à dispo un service</span></div>
+          <a class="more" href="#">Voir le détail →</a>
+        </article>
+        <article class="card proj reveal" data-c="reseau">
+          <span class="cat">Réseaux &amp; systèmes</span>
+          <h4>Segmentation réseau en VLAN</h4>
+          <p>Maquette Packet Tracer : VLAN, routage inter-VLAN et listes de contrôle d'accès.</p>
+          <div class="e5"><span>Gérer le patrimoine</span><span>Répondre aux incidents</span></div>
+          <a class="more" href="#">Voir le détail →</a>
+        </article>
+        <article class="card proj reveal" data-c="reseau">
+          <span class="cat">Réseaux &amp; systèmes</span>
+          <h4>Supervision du parc</h4>
+          <p><span class="todo">Ex. : mise en place d'un outil de supervision (GLPI, Zabbix…)</span></p>
+          <div class="e5"><span>Gérer le patrimoine</span></div>
+          <a class="more" href="#">Voir le détail →</a>
+        </article>
+        <article class="card proj reveal" data-c="bdd">
+          <span class="cat">Bases de données</span>
+          <h4>Modélisation et droits SQL</h4>
+          <p>Conception d'une base relationnelle et gestion fine des privilèges utilisateurs.</p>
+          <div class="e5"><span>Mettre à dispo un service</span></div>
+          <a class="more" href="#">Voir le détail →</a>
+        </article>
+        <article class="card proj reveal" data-c="web">
+          <span class="cat">Projets web</span>
+          <h4>Site web dynamique</h4>
+          <p><span class="todo">Ex. : site PHP / MySQL réalisé en cours</span></p>
+          <div class="e5"><span>Présence en ligne</span><span>Mode projet</span></div>
+          <a class="more" href="#">Voir le détail →</a>
+        </article>
+        <article class="card proj reveal" data-c="web">
+          <span class="cat">Projets web</span>
+          <h4>Ce portfolio</h4>
+          <p>Site statique responsive, hébergé sur GitHub Pages et versionné avec Git.</p>
+          <div class="e5"><span>Présence en ligne</span><span>Développement pro</span></div>
+          <a class="more" href="#">Voir le détail →</a>
+        </article>
+        <article class="card proj reveal" data-c="pro">
+          <span class="cat">Milieu professionnel</span>
+          <h4>Stage — Autoliv</h4>
+          <p><span class="todo">Résumé des missions réalisées pendant le stage de 1re année.</span></p>
+          <div class="e5"><span>Répondre aux incidents</span><span>Travailler en mode projet</span></div>
+          <a class="more" href="#">Voir le détail →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- VEILLE -->
+  <section id="veille">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">03.</span><h2>Veille technologique</h2>
+        <p>Thème : <strong style="color:var(--text)">les bases de données</strong>. Actualités, innovations et fuites de données, suivies mois par mois de février à août 2025.</p>
+      </div>
+      <div class="filters reveal" role="group" aria-label="Filtrer la veille par mois" id="vfilters">
+        <button class="on" data-m="all">Tout</button>
+        <button data-m="02">Fév.</button><button data-m="03">Mars</button><button data-m="04">Avril</button>
+        <button data-m="05">Mai</button><button data-m="06">Juin</button><button data-m="07">Juil.</button><button data-m="08">Août</button>
+      </div>
+      <div class="veille-grid" id="vgrid">
+        <article class="card vitem" data-m="02"><span class="axe">// Fuite de données</span><h4>DeepSeek : historiques de chat exposés</h4><p>Une base non protégée de la start-up DeepSeek (journaux, conversations, clés API) était accessible sans mot de passe. Découverte par Wiz, corrigée en moins d'une heure.</p><time>02/02/2025 · L'Usine Digitale</time></article>
+        <article class="card vitem" data-m="02"><span class="axe">// Outil</span><h4>ProxySQL, l'accélérateur open source</h4><p>Un proxy entre les applications et les bases SQL (MySQL, PostgreSQL, MariaDB) : optimisation des requêtes, répartition de charge, cache, pare-feu et monitoring.</p><time>20/02/2025 · LeMagIT</time></article>
+        <article class="card vitem" data-m="03"><span class="axe">// Données de santé</span><h4>Premier appel à projets sur le Catalogue du SNDS</h4><p>Appel à manifestation d'intérêt pour des projets de recherche en santé publique utilisant les données du Catalogue du SNDS.</p><time>10/03/2025 · <a href="https://health-data-hub.fr">Health Data Hub</a></time></article>
+        <article class="card vitem" data-m="03"><span class="axe">// Éditeur</span><h4>Oracle Database : nouveautés de mars</h4><p>Intégration d'Oracle APEX 24.2 avec l'Autonomous Database, améliorations de Data Studio et nouvelle documentation pour les migrations.</p><time>03/2025 · <a href="https://blogs.oracle.com">Oracle Blogs</a></time></article>
+        <article class="card vitem" data-m="04"><span class="axe">// Cybersécurité</span><h4>La base CVE a failli perdre son financement</h4><p>La CISA a renouvelé de justesse son contrat avec le MITRE, et une Fondation CVE indépendante a été créée pour assurer l'avenir de la base.</p><time>16/04/2025 · <a href="https://www.nextinpact.com/article/80787/la-base-de-donnees-devulnerabilites-cve-a-failli-perdre-son-financement-americain">Next</a></time></article>
+        <article class="card vitem" data-m="04"><span class="axe">// Innovation</span><h4>Quesma repense la gestion des bases</h4><p>La start-up polonaise propose un proxy qui simplifie les migrations SQL sans interruption de service.</p><time>08/04/2025 · <a href="https://www.lemondeinformatique.fr/actualites/lire-quesma-repense-la-gestion-des-bases-de-donnees%C2%A0-96563.html">Le Monde Informatique</a></time></article>
+        <article class="card vitem" data-m="05"><span class="axe">// Fuite de données</span><h4>184 millions d'identifiants en clair</h4><p>Un serveur Elastic non sécurisé contenait des identifiants de nombreux services, en grande partie volés par un infostealer. Mis hors ligne après l'alerte.</p><time>05/2025 · <a href="https://www.wired.com/story/mysterious-database-logins-governments-social-media">WIRED</a></time></article>
+        <article class="card vitem" data-m="05"><span class="axe">// Cyberattaque</span><h4>Vol de données à l'Université de Columbia</h4><p>Près de 869 000 personnes touchées et 460 Go de données volées (identités, infos académiques et financières).</p><time>05/2025 · <a href="https://www.techradar.com/pro/security/massive-columbia-university-student-data-breach-affects-nearly-900-000-heres-what-was-leaked-and-how-to-stay-safe">TechRadar</a></time></article>
+        <article class="card vitem" data-m="06"><span class="axe">// Fuite de données</span><h4>16 milliards d'identifiants dans la nature</h4><p>Une fuite historique de couples identifiant / mot de passe, collectés par des malwares puis diffusés sur le dark web.</p><time>18/06/2025 · <a href="https://www.ozarkfcu.com/blogDetail.php?June-2025-Data-Breach-16-Billion-Logins-Leaked-How-to-Stay-Safe-39=">OzarkFCU</a></time></article>
+        <article class="card vitem" data-m="06"><span class="axe">// Cyberattaque</span><h4>Série d'attaques en juin</h4><p>North Face (credential stuffing), Optima Tax Relief (ransomware), Sensata Technologies et Yes24 touchés.</p><time>06/2025 · <a href="https://www.cm-alliance.com/cybersecurity-blog/major-cyber-attacks-ransomware-attacks-and-data-breaches-of-june-2025">CM-Alliance</a></time></article>
+        <article class="card vitem" data-m="07"><span class="axe">// Supply chain</span><h4>Co-op UK : attaque via un fournisseur</h4><p>Données de 6,5 millions de membres du programme de fidélité volées via un prestataire tiers.</p><time>07/2025 · <a href="https://www.cm-alliance.com/cybersecurity-blog/major-cyber-attacks-ransomware-attacks-and-data-breaches-of-june-2025">CM-Alliance</a></time></article>
+        <article class="card vitem" data-m="07"><span class="axe">// Cloud</span><h4>Allianz Life : 1,4 million de clients touchés</h4><p>Une brèche dans un CRM cloud tiers a exposé les données de clients, employés et conseillers.</p><time>16/07/2025 · <a href="https://www.brightdefense.com/resources/recent-data-breaches/">BrightDefense</a></time></article>
+        <article class="card vitem" data-m="08"><span class="axe">// Fuite de données</span><h4>Base Salesforce de Google compromise</h4><p>Google a alerté les utilisateurs Gmail après une intrusion dans une base Salesforce, attribuée au groupe ShinyHunters.</p><time>08/2025 · <a href="https://nypost.com/2025/08/27/business/google-warns-2-5-billion-gmail-users-to-update-passwords-after-hackers-complete-successful-intrusions/">New York Post</a></time></article>
+        <article class="card vitem" data-m="08"><span class="axe">// Bilan</span><h4>Les 7 grosses brèches d'août</h4><p>Récapitulatif des principales violations de données du mois, tous secteurs confondus.</p><time>29/08/2025 · <a href="https://securityboulevard.com/2025/08/top-7-data-breaches-in-august-2025-that-made-headlines/">Security Boulevard</a></time></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFS -->
+  <section id="certifications">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">04.</span><h2>Certifications</h2>
+        <p>Parcours de certifications complémentaires (PCC).</p>
+      </div>
+      <div class="certs">
+        <div class="card cert reveal"><div class="ico">PIX</div><h4>PIX</h4><p><span class="todo">Score / date</span></p></div>
+        <div class="card cert reveal"><div class="ico">MOOC</div><h4>SecNumacadémie</h4><p>ANSSI — <span class="todo">date</span></p></div>
+        <div class="card cert reveal"><div class="ico">CNIL</div><h4>Atelier RGPD</h4><p>CNIL — <span class="todo">date</span></p></div>
+        <div class="card cert reveal"><div class="ico">NET</div><h4>Cisco NetAcad</h4><p><span class="todo">Cours suivis</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="sec-num">05.</span><h2>Contact</h2></div>
+      <div class="contact">
+        <div class="card reveal">
+          <p class="m" style="font-family:var(--mono);font-size:.85rem">$ echo "Travaillons ensemble"</p>
+          <p class="big">Un projet, un stage, une alternance ?</p>
+          <a class="btn primary" href="mailto:ton.email@exemple.fr">Me contacter</a>
+        </div>
+        <div class="card reveal">
+          <dl>
+            <dt>email</dt><dd><span class="todo">ton.email@exemple.fr</span></dd>
+            <dt>ville</dt><dd><span class="todo">Ta ville</span></dd>
+            <dt>linkedin</dt><dd><span class="todo">linkedin.com/in/…</span></dd>
+            <dt>github</dt><dd><span class="todo">github.com/…</span></dd>
+            <dt>permis</dt><dd><span class="todo">B / en cours</span></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Axel Dehan — BTS SIO SISR</span>
+    <span>Mis à jour le 11 novembre 2026</span>
+  </div>
+</footer>
+
+<script>
+  // Terminal animé
+  const lines = [
+    ['<span class="p">$</span> <span class="c">whoami</span>', 300],
+    ['Axel Dehan — étudiant BTS SIO option SISR', 500],
+    ['<span class="p">$</span> <span class="c">cat</span> parcours.log', 300],
+    ['<span class="v">[2025]</span> Entrée en BTS SIO, option SISR', 250],
+    ['<span class="v">[2026]</span> Stage de 1re année <span class="m">— Autoliv</span>', 250],
+    ['<span class="v">[2026]</span> 2e année + certifications PCC', 250],
+    ['<span class="v">[01/2027]</span> Stage de 2e année <span class="m">— Micro Technique</span>', 250],
+    ['<span class="v">[2027]</span> Diplôme visé <span class="m">→ alternance / poursuite</span>', 450],
+    ['<span class="p">$</span> <span class="c">ls</span> competences/', 300],
+    ['reseau/  systemes/  securite/  scripting/', 400],
+    ['<span class="p">$</span> <span class="cursor"></span>', 0]
+  ];
+  const t = document.getElementById('term');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { t.innerHTML = lines.map(l=>l[0]).join('\n'); }
+  else {
+    let i = 0;
+    (function next(){
+      if (i >= lines.length) return;
+      t.innerHTML += (i ? '\n' : '') + lines[i][0];
+      setTimeout(next, lines[i++][1] + 150);
+    })();
+  }
+
+  // Filtres réalisations
+  document.querySelectorAll('.filters button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.filters button').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    const f = b.dataset.f;
+    document.querySelectorAll('.proj').forEach(p => p.classList.toggle('hide', f !== 'all' && p.dataset.c !== f));
+  }));
+
+  // Filtres veille
+  document.querySelectorAll('#vfilters button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#vfilters button').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    const m = b.dataset.m;
+    document.querySelectorAll('.vitem').forEach(v => v.style.display = (m === 'all' || v.dataset.m === m) ? '' : 'none');
+  }));
+
+  // Menu mobile
+  const burger = document.querySelector('.burger'), menu = document.getElementById('menu');
+  burger.addEventListener('click', () => { const o = menu.classList.toggle('open'); burger.setAttribute('aria-expanded', o); });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+  // Apparition au scroll
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12}) : null;
+  document.querySelectorAll('.reveal').forEach(el => io ? io.observe(el) : el.classList.add('in'));
+</script>
+</body>
+</html>
