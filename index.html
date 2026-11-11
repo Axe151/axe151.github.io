@@ -121,6 +121,21 @@
   .cert .ico{width:52px;height:52px;margin:0 auto .8rem;border-radius:12px;display:grid;place-items:center;font-family:var(--mono);font-weight:600;background:linear-gradient(135deg,rgba(255,122,69,.2),rgba(167,139,250,.2));border:1px solid var(--line)}
   .cert p{color:var(--muted);font-size:.85rem}
 
+  /* E5 */
+  .e5-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--card)}
+  .e5-table{width:100%;border-collapse:collapse;min-width:760px;font-size:.9rem}
+  .e5-table th,.e5-table td{padding:.75rem .8rem;border-bottom:1px solid var(--line);text-align:center}
+  .e5-table th:first-child,.e5-table td:first-child{text-align:left}
+  .e5-table thead th{background:var(--bg-2);font-family:var(--mono);font-size:.74rem;color:var(--muted);font-weight:600;vertical-align:bottom}
+  .e5-table thead th b{display:block;color:var(--accent);font-size:.82rem;margin-bottom:.2rem}
+  .e5-table .grp td{background:rgba(167,139,250,.08);color:var(--accent-3);font-family:var(--mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;text-align:left}
+  .e5-table td.y{color:var(--accent-2);font-weight:700}
+  .e5-table td.n{color:var(--line)}
+  .e5-table tfoot td{font-family:var(--mono);font-weight:600;background:var(--bg-2);color:var(--accent)}
+  .e5-table tbody tr:not(.grp):hover td{background:rgba(255,255,255,.02)}
+  .e5-info{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:1.4rem}
+  @media (max-width:860px){.e5-info{grid-template-columns:1fr}}
+
   /* CONTACT */
   .contact{display:grid;grid-template-columns:1.2fr 1fr;gap:1.4rem;align-items:stretch}
   .contact .big{font-size:1.5rem;font-weight:700;margin:.4rem 0 1rem}
@@ -156,6 +171,7 @@
         <li><a href="#realisations">Réalisations</a></li>
         <li><a href="#veille">Veille</a></li>
         <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#e5">Épreuve E5</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -356,10 +372,63 @@
     </div>
   </section>
 
+  <!-- E5 -->
+  <section id="e5">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">05.</span><h2>Épreuve E5 — tableau de synthèse</h2>
+        <p>Épreuve E5 « Support et mise à disposition de services informatiques ». Chaque réalisation est rattachée aux compétences du bloc 1 qu'elle mobilise. Les totaux se calculent automatiquement.</p>
+      </div>
+      <div class="e5-wrap reveal">
+        <table class="e5-table" id="e5table">
+          <thead><tr>
+            <th>Réalisation</th>
+            <th><b>B1.1</b>Gérer le patrimoine informatique</th>
+            <th><b>B1.2</b>Répondre aux incidents et demandes</th>
+            <th><b>B1.3</b>Développer la présence en ligne</th>
+            <th><b>B1.4</b>Travailler en mode projet</th>
+            <th><b>B1.5</b>Mettre à disposition un service</th>
+            <th><b>B1.6</b>Organiser son développement pro</th>
+          </tr></thead>
+          <tbody>
+            <tr class="grp"><td colspan="7">Milieu professionnel</td></tr>
+            <tr data-c="1,3,4,5"><td>Annuaire automatisé des employés — stage Autoliv (2025)</td></tr>
+            <tr data-c="1"><td>Borne Wi-Fi Cisco en CLI — stage Autoliv (2023)</td></tr>
+            <tr class="grp"><td colspan="7">Réseaux &amp; systèmes</td></tr>
+            <tr data-c=""><td><span class="todo">Tes réalisations SISR en cours (AD, VLAN…)</span></td></tr>
+            <tr class="grp"><td colspan="7">Développement professionnel</td></tr>
+            <tr data-c="3,6"><td>Portfolio en ligne (GitHub Pages)</td></tr>
+            <tr data-c="6"><td>Veille technologique — les bases de données</td></tr>
+            <tr data-c="6"><td>Certifications PCC — Pix, ANSSI, RGPD</td></tr>
+          </tbody>
+          <tfoot><tr id="e5tot"><td>Nombre de réalisations</td></tr></tfoot>
+        </table>
+      </div>
+      <div class="e5-info">
+        <div class="card reveal">
+          <h3>Attestations de stage</h3>
+          <ul class="tl">
+            <li><span class="date">26 mai — 27 juin 2025</span><h4>Autoliv — Gournay-en-Bray</h4><p>Stage de 1re année BTS SIO, service informatique (5 semaines).</p></li>
+            <li><span class="date">Janvier 2027</span><h4>Micro Technique</h4><p>Stage de 2e année BTS SIO <span class="todo">à compléter</span></p></li>
+          </ul>
+          <p class="m" style="font-size:.85rem">Attestations disponibles sur demande.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Candidat</h3>
+          <dl class="contact" style="display:grid;grid-template-columns:auto 1fr;gap:.6rem 1rem">
+            <dt style="font-family:var(--mono);color:var(--accent-2);font-size:.82rem">nom</dt><dd>Axel Dehan</dd>
+            <dt style="font-family:var(--mono);color:var(--accent-2);font-size:.82rem">formation</dt><dd>BTS SIO — option SISR</dd>
+            <dt style="font-family:var(--mono);color:var(--accent-2);font-size:.82rem">session</dt><dd>2027</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact">
     <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-num">05.</span><h2>Contact</h2></div>
+      <div class="sec-head reveal"><span class="sec-num">06.</span><h2>Contact</h2></div>
       <div class="contact">
         <div class="card reveal">
           <p class="m" style="font-family:var(--mono);font-size:.85rem">$ echo "Travaillons ensemble"</p>
@@ -430,6 +499,20 @@
     const m = b.dataset.m;
     document.querySelectorAll('.vitem').forEach(v => v.style.display = (m === 'all' || v.dataset.m === m) ? '' : 'none');
   }));
+
+  // Tableau E5 : cases et totaux automatiques
+  const tot = [0,0,0,0,0,0];
+  document.querySelectorAll('#e5table tbody tr:not(.grp)').forEach(tr => {
+    const on = tr.dataset.c ? tr.dataset.c.split(',').map(Number) : [];
+    for (let k = 1; k <= 6; k++) {
+      const td = document.createElement('td');
+      if (on.includes(k)) { td.className = 'y'; td.textContent = '✓'; tot[k-1]++; }
+      else { td.className = 'n'; td.textContent = '—'; }
+      tr.appendChild(td);
+    }
+  });
+  const trt = document.getElementById('e5tot');
+  tot.forEach(n => { const td = document.createElement('td'); td.textContent = n; trt.appendChild(td); });
 
   // Menu mobile
   const burger = document.querySelector('.burger'), menu = document.getElementById('menu');
