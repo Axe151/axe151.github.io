@@ -105,6 +105,23 @@
   .e5{display:flex;gap:.35rem;flex-wrap:wrap}
   .e5 span{font-family:var(--mono);font-size:.7rem;padding:.15rem .5rem;border-radius:6px;background:rgba(217,72,15,.08);color:var(--accent)}
   .proj a.more{font-size:.88rem;color:var(--accent-2);text-decoration:none}
+  .proj .proj-btn{align-self:flex-start;background:none;border:none;padding:0;font:inherit;font-size:.88rem;color:var(--accent-2);cursor:pointer}
+  .proj .proj-btn:hover{text-decoration:underline}
+  .proj-thumb{width:calc(100% + 2.8rem);margin:-1.4rem -1.4rem .2rem;height:150px;object-fit:cover;object-position:top;border-radius:var(--radius) var(--radius) 0 0;border-bottom:1px solid var(--line);background:var(--bg-2)}
+  #projModal{margin:auto;border:none;border-radius:var(--radius);padding:0;max-width:min(760px,94vw);width:100%;max-height:90vh;background:var(--card);color:var(--text);box-shadow:0 30px 80px rgba(16,24,40,.35)}
+  #projModal::backdrop{background:rgba(16,24,40,.6);backdrop-filter:blur(3px)}
+  #projModal .cm-head{position:sticky;top:0;background:var(--card);z-index:1}
+  .pm-body{padding:1rem 1.2rem 1.4rem}
+  .pm-fig{margin:0 0 .6rem}
+  .pm-fig img{display:block;width:100%;max-height:380px;object-fit:contain;background:var(--bg-2);border-radius:10px;border:1px solid var(--line)}
+  .pm-fig figcaption{font-size:.82rem;color:var(--muted);margin-top:.35rem;text-align:center}
+  .pm-thumbs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+  .pm-thumbs button{padding:0;border:2px solid var(--line);border-radius:8px;overflow:hidden;cursor:pointer;background:none;width:84px;height:56px}
+  .pm-thumbs button.on{border-color:var(--accent)}
+  .pm-thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+  .pm-ctx{color:var(--muted);margin-bottom:1rem}
+  .pm-body h5{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin:.8rem 0 .4rem}
+  .pm-body ol{padding-left:1.2rem;display:grid;gap:.3rem;font-size:.93rem}
   .proj.hide{display:none}
 
   /* VEILLE */
@@ -299,61 +316,92 @@
       </div>
       <div class="projects">
         <article class="card proj reveal" data-c="reseau">
-          <span class="cat">Réseaux &amp; systèmes</span>
-          <h4>Infrastructure Active Directory</h4>
-          <p>Déploiement d'un contrôleur de domaine, création des OU, utilisateurs et GPO.</p>
+          <img class="proj-thumb" src="projets/ad-1.webp" alt="" loading="lazy"><span class="cat">Réseaux &amp; systèmes</span>
+          <h4>Infrastructure Active Directory et GPO</h4>
+          <p>Domaine Windows pour une mairie : contrôleur de domaine, utilisateurs, groupes et une GPO qui déploie BGInfo.</p>
           <div class="e5"><span>Gérer le patrimoine</span><span>Mettre à dispo un service</span></div>
-          <a class="more" href="#">Voir le détail →</a>
+          <button type="button" class="more proj-btn" data-p="ad">Voir le détail →</button>
         </article>
         <article class="card proj reveal" data-c="reseau">
-          <span class="cat">Réseaux &amp; systèmes</span>
-          <h4>Segmentation réseau en VLAN</h4>
-          <p>Maquette Packet Tracer : VLAN, routage inter-VLAN et listes de contrôle d'accès.</p>
+          <img class="proj-thumb" src="projets/ilot-1.webp" alt="" loading="lazy"><span class="cat">Réseaux &amp; systèmes</span>
+          <h4>Îlot réseau et segmentation en VLAN</h4>
+          <p>Câblage et mise en service de mon îlot (baie, switch, routeur, postes) et découpage en VLAN.</p>
           <div class="e5"><span>Gérer le patrimoine</span><span>Répondre aux incidents</span></div>
-          <a class="more" href="#">Voir le détail →</a>
+          <button type="button" class="more proj-btn" data-p="ilot">Voir le détail →</button>
         </article>
         <article class="card proj reveal" data-c="reseau">
-          <span class="cat">Réseaux &amp; systèmes</span>
-          <h4>Supervision du parc</h4>
-          <p><span class="todo">Ex. : mise en place d'un outil de supervision (GLPI, Zabbix…)</span></p>
-          <div class="e5"><span>Gérer le patrimoine</span></div>
-          <a class="more" href="#">Voir le détail →</a>
+          <img class="proj-thumb" src="projets/syslog-1.webp" alt="" loading="lazy"><span class="cat">Réseaux &amp; systèmes</span>
+          <h4>Centralisation des logs : Syslog vers Wazuh</h4>
+          <p>Faire remonter les journaux des équipements réseau vers un serveur central pour les surveiller.</p>
+          <div class="e5"><span>Gérer le patrimoine</span><span>Répondre aux incidents</span></div>
+          <button type="button" class="more proj-btn" data-p="syslog">Voir le détail →</button>
+        </article>
+        <article class="card proj reveal" data-c="reseau">
+          <img class="proj-thumb" src="projets/pfsense-1.webp" alt="" loading="lazy"><span class="cat">Réseaux &amp; systèmes</span>
+          <h4>Pare-feu pfSense et DMZ</h4>
+          <p>Pare-feu virtualisé avec trois zones (WAN, LAN, DMZ), DHCP, règles de filtrage et NAT vers un serveur web.</p>
+          <div class="e5"><span>Gérer le patrimoine</span><span>Mettre à dispo un service</span></div>
+          <button type="button" class="more proj-btn" data-p="pfsense">Voir le détail →</button>
+        </article>
+        <article class="card proj reveal" data-c="reseau">
+          <img class="proj-thumb" src="projets/truenas-1.webp" alt="" loading="lazy"><span class="cat">Réseaux &amp; systèmes</span>
+          <h4>Stockage réseau avec TrueNAS</h4>
+          <p>Serveur de stockage en RAID 1 avec partages réseau pour sauvegarder les données d'un client Linux.</p>
+          <div class="e5"><span>Gérer le patrimoine</span><span>Mettre à dispo un service</span></div>
+          <button type="button" class="more proj-btn" data-p="truenas">Voir le détail →</button>
+        </article>
+        <article class="card proj reveal" data-c="reseau">
+          <img class="proj-thumb" src="projets/glpi-1.webp" alt="" loading="lazy"><span class="cat">Réseaux &amp; systèmes</span>
+          <h4>Gestion de parc avec GLPI</h4>
+          <p>Installation d'un serveur LAMP et de GLPI pour inventorier le parc et suivre les incidents.</p>
+          <div class="e5"><span>Gérer le patrimoine</span><span>Répondre aux incidents</span></div>
+          <button type="button" class="more proj-btn" data-p="glpi">Voir le détail →</button>
         </article>
         <article class="card proj reveal" data-c="bdd">
-          <span class="cat">Bases de données</span>
+          <img class="proj-thumb" src="projets/sql-1.webp" alt="" loading="lazy"><span class="cat">Bases de données</span>
           <h4>Modélisation et droits SQL</h4>
           <p>Conception d'une base relationnelle et gestion fine des privilèges utilisateurs.</p>
           <div class="e5"><span>Mettre à dispo un service</span></div>
-          <a class="more" href="#">Voir le détail →</a>
+          <button type="button" class="more proj-btn" data-p="sql">Voir le détail →</button>
         </article>
         <article class="card proj reveal" data-c="web">
-          <span class="cat">Projets web</span>
-          <h4>Site web dynamique</h4>
-          <p><span class="todo">Ex. : site PHP / MySQL réalisé en cours</span></p>
-          <div class="e5"><span>Présence en ligne</span><span>Mode projet</span></div>
-          <a class="more" href="#">Voir le détail →</a>
+          <img class="proj-thumb" src="projets/apache-1.webp" alt="" loading="lazy"><span class="cat">Projets web</span>
+          <h4>Serveur web Apache sous Linux</h4>
+          <p>Installation et sécurisation d'un serveur web Apache sur Ubuntu.</p>
+          <div class="e5"><span>Présence en ligne</span><span>Mettre à dispo un service</span></div>
+          <button type="button" class="more proj-btn" data-p="apache">Voir le détail →</button>
         </article>
         <article class="card proj reveal" data-c="web">
-          <span class="cat">Projets web</span>
+          <img class="proj-thumb" src="projets/portfolio-1.webp" alt="" loading="lazy"><span class="cat">Projets web</span>
           <h4>Ce portfolio</h4>
           <p>Site statique responsive, hébergé sur GitHub Pages et versionné avec Git.</p>
           <div class="e5"><span>Présence en ligne</span><span>Développement pro</span></div>
-          <a class="more" href="#">Voir le détail →</a>
+          <button type="button" class="more proj-btn" data-p="portfolio">Voir le détail →</button>
         </article>
         <article class="card proj reveal" data-c="pro">
           <span class="cat">Milieu professionnel</span>
           <h4>Annuaire automatisé — Autoliv</h4>
           <p>Stage de 1re année : annuaire des employés avec recherche, fiches et QR codes. Python (traitement CSV), Flask / PHP, API SMS, Raspberry Pi sous Linux.</p>
           <div class="e5"><span>B1.1 Patrimoine</span><span>B1.3 Présence en ligne</span><span>B1.4 Mode projet</span><span>B1.5 Mise à dispo</span></div>
-          <a class="more" href="#">Voir le détail →</a>
+          <button type="button" class="more proj-btn" data-p="autoliv">Voir le détail →</button>
         </article>
         <article class="card proj reveal" data-c="reseau">
           <span class="cat">Réseaux &amp; systèmes</span>
           <h4>Borne Wi-Fi Cisco en CLI</h4>
           <p>Stage de Bac Pro chez Autoliv : configuration d'un point d'accès Cisco via câble console et PuTTY (SSID, WPA2 / AES, radio 5 GHz).</p>
           <div class="e5"><span>Gérer le patrimoine</span><span>Sécurité sans fil</span></div>
-          <a class="more" href="#">Voir le détail →</a>
+          <button type="button" class="more proj-btn" data-p="wifi">Voir le détail →</button>
         </article>
+      <dialog id="projModal" aria-labelledby="pmTitle">
+        <div class="cm-head"><h4 id="pmTitle"></h4><button type="button" id="pmClose" aria-label="Fermer">✕</button></div>
+        <div class="pm-body">
+          <figure class="pm-fig" id="pmFig"><img id="pmImg" src="" alt=""><figcaption id="pmCap"></figcaption></figure>
+          <div class="pm-thumbs" id="pmThumbs"></div>
+          <p class="pm-ctx" id="pmCtx"></p>
+          <h5>Ce que j'ai fait</h5><ol id="pmSteps"></ol>
+          <h5>Outils</h5><div class="chips" id="pmTools"></div>
+        </div>
+      </dialog>
       </div>
     </div>
   </section>
@@ -552,12 +600,32 @@
   }
 
   // Filtres réalisations
-  document.querySelectorAll('.filters button').forEach(b => b.addEventListener('click', () => {
-    document.querySelectorAll('.filters button').forEach(x => x.classList.remove('on'));
+  document.querySelectorAll('#realisations .filters button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#realisations .filters button').forEach(x => x.classList.remove('on'));
     b.classList.add('on');
     const f = b.dataset.f;
     document.querySelectorAll('.proj').forEach(p => p.classList.toggle('hide', f !== 'all' && p.dataset.c !== f));
   }));
+
+  // Détail des réalisations
+  const PROJ = {"ad": {"t": "Infrastructure Active Directory et GPO", "ctx": "Projet en binôme : mettre en place un annuaire Active Directory pour la mairie fictive evi-mairie.local afin de centraliser l'authentification et les droits d'accès.", "steps": ["Nommage du serveur Windows Server et promotion en contrôleur de domaine (AD DS + DNS).", "Jonction des postes clients au domaine.", "Création des comptes utilisateurs et des groupes de sécurité métiers.", "GPO d'ouverture de session qui lance BGInfo (script PowerShell déposé dans SYSVOL) pour afficher les infos du poste sur le fond d'écran.", "Test sur un client Windows 11 avec gpupdate /force."], "tools": ["Windows Server", "AD DS", "DNS", "GPO", "PowerShell", "BGInfo"], "imgs": [["ad-1", "Utilisateurs et groupes dans la console Active Directory"], ["ad-2", "Ouverture de session sur le domaine depuis un poste client"], ["ad-3", "Champs affichés par BGInfo"], ["ad-4", "Application de la GPO avec gpupdate /force"]]}, "ilot": {"t": "Îlot réseau et segmentation en VLAN", "ctx": "En salle SISR, chaque binôme installe et administre son propre îlot réseau. Le mien utilise les VLAN 41 à 45.", "steps": ["Brassage de la baie : panneau 24 ports, routeur VPN TP-Link Omada ER7206 et switch HP 2530-8G.", "Installation des postes de travail de la salle (un serveur et un client).", "Diagnostic d'un poste : disque dur défectueux non détecté, remplacé par un nouveau disque.", "Segmentation du réseau en VLAN, d'abord maquettée sous Packet Tracer (VLAN, routage inter-VLAN, ACL)."], "tools": ["Câblage / brassage", "Switch HP", "TP-Link Omada", "VLAN", "Cisco Packet Tracer"], "imgs": [["ilot-1", "Baie de brassage de l'îlot"], ["ilot-2", "Postes de travail installés"], ["ilot-3", "Remplacement du disque dur défectueux"]]}, "syslog": {"t": "Centralisation des logs : Syslog vers Wazuh", "ctx": "Projet SISR : centraliser les logs de tous les équipements réseau (switchs, etc.) vers Wazuh hébergé sur Proxmox. Première étape : l'envoi Syslog depuis un switch Cisco.", "steps": ["Connexion console au switch Cisco 3750E avec PuTTY.", "Configuration : adresse IP sur le Vlan1, logging host, niveau informational et facility local6.", "Côté serveur : IP fixe, ouverture du port UDP 514 dans le pare-feu, collecteur Syslog.", "Test : passage en mode configuration et réception du message %SYS-5-CONFIG_I.", "Suite du projet : intégration des logs dans Wazuh sur Proxmox."], "tools": ["Cisco IOS", "Syslog", "PuTTY", "Wazuh", "Proxmox"], "imgs": [["syslog-1", "show ip interface brief : Vlan1 et le port Gi4/0/1 sont up"], ["syslog-2", "Logs du switch reçus par le serveur Syslog"], ["syslog-3", "Collecteur Syslog actif"]]}, "pfsense": {"t": "Pare-feu pfSense et DMZ", "ctx": "TP en machines virtuelles VirtualBox : protéger un LAN et publier un serveur web placé en DMZ.", "steps": ["Installation de pfSense et adressage des interfaces (LAN 10.42.1.0/24, DMZ 10.42.2.0/24).", "Serveur DHCP sur le LAN, résolution DNS et réglages de l'assistant.", "Création d'alias et de règles de filtrage pour le LAN, la DMZ et le WAN.", "Redirection de port (NAT) vers le serveur web nginx en DMZ.", "Tests depuis le client : ce qui doit passer passe, le reste est bloqué."], "tools": ["pfSense", "VirtualBox", "DHCP / DNS", "NAT", "nginx"], "imgs": [["pfsense-1", "Tableau de bord pfSense"], ["pfsense-2", "Règles de filtrage du LAN"], ["pfsense-3", "Règles de filtrage de la DMZ"], ["pfsense-4", "Serveur nginx joignable en DMZ"]]}, "truenas": {"t": "Stockage réseau avec TrueNAS", "ctx": "Mettre en place un NAS en machine virtuelle et l'utiliser comme cible de sauvegarde pour un client Ubuntu.", "steps": ["VM TrueNAS : un disque système et deux disques de 20 Go.", "Création du pool « sauvegarde » en miroir (RAID 1).", "Datasets, utilisateurs et droits d'accès.", "Partages SMB et NFS, puis montage depuis le client Ubuntu pour y copier des sauvegardes."], "tools": ["TrueNAS", "RAID 1", "SMB", "NFS", "Ubuntu"], "imgs": [["truenas-1", "Tableau de bord TrueNAS"], ["truenas-2", "Pool de stockage en miroir"], ["truenas-3", "Partages réseau SMB et NFS"]]}, "glpi": {"t": "Gestion de parc avec GLPI", "ctx": "Déployer l'outil de gestion de parc et de ticketing GLPI sur un serveur Linux.", "steps": ["Installation de la pile LAMP : Apache, PHP 8.4 et MariaDB.", "Téléchargement de GLPI 11.0.9, déploiement dans /var/www/glpi et droits pour www-data.", "Configuration d'un VirtualHost Apache dédié.", "Assistant d'installation : vérification des prérequis, connexion à la base, création des tables."], "tools": ["Debian / Linux", "Apache", "PHP", "MariaDB", "GLPI"], "imgs": [["glpi-1", "Page de connexion GLPI"], ["glpi-2", "Installation terminée"], ["glpi-3", "VirtualHost Apache pour GLPI"]]}, "sql": {"t": "Modélisation et droits SQL", "ctx": "Sécuriser une base MySQL en donnant à chaque utilisateur uniquement les droits dont il a besoin.", "steps": ["Création de la base et des tables.", "Création d'utilisateurs MySQL dédiés.", "Attribution de privilèges ciblés avec GRANT sur des tables précises.", "Vérification : une action non autorisée (CREATE) est bien refusée."], "tools": ["MySQL", "phpMyAdmin", "SQL"], "imgs": [["sql-1", "Administration de la base avec phpMyAdmin"], ["sql-2", "Action refusée : droits insuffisants"]]}, "apache": {"t": "Serveur web Apache sous Linux", "ctx": "TP : publier une page web sur un serveur Linux.", "steps": ["Mise à jour du système avec apt.", "Installation d'Apache2 et vérification du service avec systemctl.", "Configuration du pare-feu UFW (profils Apache).", "Création d'une page d'accueil personnalisée dans /var/www/html."], "tools": ["Ubuntu", "Apache2", "UFW", "HTML"], "imgs": [["apache-1", "Service Apache actif"], ["apache-2", "Page d'accueil personnalisée"], ["apache-3", "Profils Apache disponibles dans UFW"]]}, "portfolio": {"t": "Ce portfolio", "ctx": "Créer ma vitrine professionnelle pour l'épreuve E5 et mes recherches de stage.", "steps": ["Page unique en HTML, CSS et JavaScript, sans framework.", "Sections CV, réalisations, veille, certifications et tableau E5.", "Certificats et réalisations consultables dans des fenêtres de détail.", "Hébergement gratuit sur GitHub Pages, chaque modification est versionnée."], "tools": ["HTML", "CSS", "JavaScript", "Git", "GitHub Pages"], "imgs": [["portfolio-1", "Page d'accueil du portfolio"], ["portfolio-2", "Section Certifications"]]}, "autoliv": {"t": "Annuaire automatisé — Autoliv", "ctx": "Stage de 1re année BTS au service informatique d'Autoliv (Gournay-en-Bray), du 26 mai au 27 juin 2025.", "steps": ["Traitement automatique des données des employés en Python (fichiers CSV).", "Interface web de recherche avec une fiche par employé et un QR code.", "Intégration d'une API d'envoi de SMS.", "Déploiement sur un Raspberry Pi sous Linux."], "tools": ["Python", "Flask / PHP", "API SMS", "Raspberry Pi", "Linux"], "imgs": []}, "wifi": {"t": "Borne Wi-Fi Cisco en CLI", "ctx": "Stage de Terminale Bac Pro au service informatique d'Autoliv (Gournay-en-Bray), en mars 2023.", "steps": ["Connexion au point d'accès Cisco par câble console avec PuTTY.", "Configuration du SSID.", "Sécurisation en WPA2 avec chiffrement AES.", "Activation et réglage de la radio 5 GHz."], "tools": ["Cisco IOS", "PuTTY", "WPA2 / AES", "Wi-Fi 5 GHz"], "imgs": []}};
+  const pm = document.getElementById('projModal');
+  if (pm) {
+    const $ = id => document.getElementById(id);
+    const show = (src, cap, btn) => { $('pmImg').src = 'projets/' + src + '.webp'; $('pmImg').alt = cap; $('pmCap').textContent = cap; $('pmThumbs').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === btn)); };
+    document.querySelectorAll('.proj-btn').forEach(b => b.addEventListener('click', () => {
+      const d = PROJ[b.dataset.p]; if (!d) return;
+      $('pmTitle').textContent = d.t; $('pmCtx').textContent = d.ctx;
+      $('pmSteps').innerHTML = ''; d.steps.forEach(t => { const li = document.createElement('li'); li.textContent = t; $('pmSteps').appendChild(li); });
+      $('pmTools').innerHTML = ''; d.tools.forEach(t => { const c = document.createElement('span'); c.className = 'chip'; c.textContent = t; $('pmTools').appendChild(c); });
+      $('pmThumbs').innerHTML = ''; $('pmFig').style.display = d.imgs.length ? '' : 'none';
+      d.imgs.forEach(([src, cap], i) => { const t = document.createElement('button'); t.type = 'button'; t.title = cap; t.innerHTML = '<img src="projets/' + src + '.webp" alt="">'; t.addEventListener('click', () => show(src, cap, t)); $('pmThumbs').appendChild(t); if (i === 0) show(src, cap, t); });
+      $('pmThumbs').style.display = d.imgs.length > 1 ? '' : 'none';
+      pm.showModal(); pm.scrollTop = 0;
+    }));
+    $('pmClose').addEventListener('click', () => pm.close());
+    pm.addEventListener('click', e => { if (e.target === pm) pm.close(); });
+  }
 
   // Filtres veille
   document.querySelectorAll('#vfilters button').forEach(b => b.addEventListener('click', () => {
