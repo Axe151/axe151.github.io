@@ -105,6 +105,16 @@
   .e5{display:flex;gap:.35rem;flex-wrap:wrap}
   .e5 span{font-family:var(--mono);font-size:.7rem;padding:.15rem .5rem;border-radius:6px;background:rgba(217,72,15,.08);color:var(--accent)}
   .proj a.more{font-size:.88rem;color:var(--accent-2);text-decoration:none}
+  .born{margin-bottom:2.2rem}
+  .born-q{margin-bottom:1rem}
+  .born-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-bottom:1rem}
+  .born-grid h5{font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem}
+  .born-grid div:first-child h5{color:var(--accent-2)}
+  .born-grid div:last-child h5{color:var(--accent)}
+  .born-grid ul{padding-left:1.1rem;display:grid;gap:.25rem;font-size:.92rem;color:var(--muted)}
+  .born-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.6rem;border-top:1px solid var(--line);padding-top:1rem}
+  .born-meta dt{font-family:var(--mono);font-size:.75rem;text-transform:uppercase;color:var(--accent-3)}
+  .born-meta dd{margin:0;font-size:.9rem}
   .proj .proj-btn{align-self:flex-start;background:none;border:none;padding:0;font:inherit;font-size:.88rem;color:var(--accent-2);cursor:pointer}
   .proj .proj-btn:hover{text-decoration:underline}
   .proj-thumb{width:calc(100% + 2.8rem);margin:-1.4rem -1.4rem .2rem;height:150px;object-fit:cover;object-position:top;border-radius:var(--radius) var(--radius) 0 0;border-bottom:1px solid var(--line);background:var(--bg-2)}
@@ -412,6 +422,23 @@
       <div class="sec-head reveal">
         <span class="sec-num">03.</span><h2>Veille technologique</h2>
         <p>Thème : <strong style="color:var(--text)">la cyberdéfense en entreprise</strong>. Attaques, failles exploitées, réglementation (NIS 2) et leçons à en tirer pour protéger un système d'information, suivies mois par mois de juin à novembre 2026.</p>
+      </div>
+      <h3 class="reveal">Bornage du sujet</h3>
+      <p class="tools-intro reveal">Les limites que je me suis fixées pour garder une veille ciblée et exploitable.</p>
+      <div class="card born reveal">
+        <p class="born-q"><b>Problématique :</b> comment une entreprise peut-elle protéger son système d'information face à des cyberattaques de plus en plus fréquentes et à des obligations réglementaires renforcées ?</p>
+        <div class="born-grid">
+          <div><h5>✔ Ce que j'inclus</h5><ul><li>Cyberattaques visant des entreprises et des organisations publiques (rançongiciels, phishing, fuites de données)</li><li>Failles exploitées sur les équipements et logiciels du SI (CVE critiques, pare-feu, VPN, messagerie)</li><li>Réglementation : directive NIS 2, RGPD, recommandations de l'ANSSI</li><li>Mesures de défense : sauvegardes, MFA, mises à jour, segmentation, supervision</li></ul></div>
+          <div><h5>✘ Ce que j'exclus</h5><ul><li>La cybersécurité des particuliers</li><li>Les aspects militaires et géopolitiques</li><li>Le détail technique des attaques (code d'exploitation)</li><li>Les cryptomonnaies et la fraude financière pure</li></ul></div>
+        </div>
+        <dl class="born-meta">
+          <div><dt>Période</dt><dd>Juin à novembre 2026</dd></div>
+          <div><dt>Zone</dt><dd>France et Europe en priorité, incidents internationaux s'ils concernent les entreprises</dd></div>
+          <div><dt>Cibles</dt><dd>PME, ETI, grands groupes et collectivités</dd></div>
+          <div><dt>Langues</dt><dd>Français et anglais</dd></div>
+          <div><dt>Mots-clés</dt><dd>cyberdéfense, rançongiciel, fuite de données, CVE, NIS 2, ANSSI, SOC, EDR</dd></div>
+          <div><dt>Sources</dt><dd>ANSSI (cyber.gouv.fr), IT-Connect, Next, Clubic, Futura, SecurityWeek, Help Net Security, CSO Online</dd></div>
+        </dl>
       </div>
       <h3 class="reveal">Outils de veille</h3>
       <p class="tools-intro reveal">Les outils que j'utilise pour ma veille technologique et concurrentielle.</p>
