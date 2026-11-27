@@ -172,6 +172,17 @@
   .cm-head button{background:var(--bg-2);border:1px solid var(--line);border-radius:8px;width:34px;height:34px;cursor:pointer;color:var(--text);font-size:1rem}
   #certModalImg{display:block;width:100%;height:auto;max-height:55vh;object-fit:contain;background:#fff}
 
+  .rect-sub{font-family:var(--mono);font-size:.9rem;color:var(--muted);margin:.2rem 0 .6rem}
+  .rect-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+  @media (max-width:760px){.rect-cards{grid-template-columns:1fr}}
+  .rect-card{display:flex;flex-direction:column;align-items:flex-start;gap:.5rem}
+  .rect-tag{font-family:var(--mono);font-size:.78rem;padding:.15rem .55rem;border:1px solid var(--line);border-radius:6px;background:var(--bg-2);color:var(--muted)}
+  .rect-card h4{font-size:1.25rem}
+  .rect-card p{color:var(--muted)}
+  .rect-links{display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:.4rem;font-family:var(--mono);font-size:.85rem}
+  .rect-links a{color:var(--accent-2);text-decoration:none}
+  .rect-links a:hover{text-decoration:underline}
+  .rect-off{color:var(--muted)}
   /* E5 */
   .e5-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--card)}
   .e5-table{width:100%;border-collapse:collapse;min-width:760px;font-size:.9rem}
@@ -222,7 +233,7 @@
         <li><a href="#realisations">Réalisations</a></li>
         <li><a href="#veille">Veille</a></li>
         <li><a href="#certifications">Certifications</a></li>
-        <li><a href="#e5">Épreuve E5</a></li>
+        <li><a href="#rectorat">Rectorat</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -489,13 +500,29 @@
     </div>
   </section>
 
-  <!-- E5 -->
-  <section id="e5">
+  <!-- RECTORAT -->
+  <section id="rectorat">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="sec-num">05.</span><h2>Épreuve E5 — tableau de synthèse</h2>
-        <p>Épreuve E5 « Support et mise à disposition de services informatiques ». Chaque réalisation est rattachée aux compétences du bloc 1 qu'elle mobilise. Les totaux se calculent automatiquement.</p>
+        <span class="sec-num">05.</span><h2>Rectorat</h2>
+        <p class="rect-sub">BTS SIO option SISR · Session 2027</p>
+        <p>Tableau de synthèse des réalisations professionnelles, attestations de stage et éléments spécifiques aux épreuves E5 et E6.</p>
       </div>
+      <div class="rect-cards">
+        <article class="card rect-card reveal">
+          <span class="rect-tag">E5</span>
+          <h4>Sous-option E5</h4>
+          <p>Tableau de synthèse et attestations de stage.</p>
+          <div class="rect-links"><a href="docs/tableau-synthese-E5-Dehan-Axel.pdf" target="_blank" rel="noopener">Ouvrir ›</a><a href="docs/tableau-synthese-E5-Dehan-Axel.xlsx" download>Télécharger (.xlsx) ›</a></div>
+        </article>
+        <article class="card rect-card reveal">
+          <span class="rect-tag">E6</span>
+          <h4>Sous-option E6</h4>
+          <p>Documents non disponibles pour le moment.</p>
+          <div class="rect-links"><span class="rect-off">Bientôt disponible</span></div>
+        </article>
+      </div>
+      <h3 class="reveal" style="margin-top:2.4rem">Tableau de synthèse E5</h3>
       <div class="e5-wrap reveal">
         <table class="e5-table" id="e5table">
           <thead><tr>
@@ -508,15 +535,21 @@
             <th><b>B1.6</b>Organiser son développement pro</th>
           </tr></thead>
           <tbody>
-            <tr class="grp"><td colspan="7">Milieu professionnel</td></tr>
-            <tr data-c="1,3,4,5"><td>Annuaire automatisé des employés — stage Autoliv (2025)</td></tr>
-            <tr data-c="1"><td>Borne Wi-Fi Cisco en CLI — stage Autoliv (2023)</td></tr>
-            <tr class="grp"><td colspan="7">Réseaux &amp; systèmes</td></tr>
-            <tr data-c=""><td><span class="todo">Tes réalisations SISR en cours (AD, VLAN…)</span></td></tr>
-            <tr class="grp"><td colspan="7">Développement professionnel</td></tr>
+            <tr class="grp"><td colspan="7">Réalisations en cours de formation</td></tr>
+            <tr data-c="1,5"><td>Infrastructure Active Directory et GPO</td></tr>
+            <tr data-c="1,2"><td>Îlot réseau et segmentation en VLAN</td></tr>
+            <tr data-c="1,2,4"><td>Centralisation des logs : Syslog vers Wazuh</td></tr>
+            <tr data-c="1,5"><td>Pare-feu pfSense et DMZ</td></tr>
+            <tr data-c="1,5"><td>Stockage réseau avec TrueNAS</td></tr>
+            <tr data-c="1,2,5"><td>Gestion de parc avec GLPI</td></tr>
+            <tr data-c="1,5"><td>Base de données MySQL : modélisation et droits</td></tr>
+            <tr data-c="3,5"><td>Serveur web Apache sous Linux</td></tr>
             <tr data-c="3,6"><td>Portfolio en ligne (GitHub Pages)</td></tr>
-            <tr data-c="6"><td>Veille technologique — la cyberdéfense en entreprise</td></tr>
-            <tr data-c="6"><td>Certifications PCC — Pix, ANSSI, RGPD, Cisco</td></tr>
+            <tr data-c="6"><td>Veille technologique et certifications PIX, ANSSI, Cisco</td></tr>
+            <tr class="grp"><td colspan="7">Milieu professionnel — 1re année</td></tr>
+            <tr data-c="1,3,4,5"><td>Annuaire automatisé des employés — stage Autoliv (2025)</td></tr>
+            <tr class="grp"><td colspan="7">Milieu professionnel — 2e année</td></tr>
+            <tr data-c=""><td>Stage Micro Technique (Rouen) — janvier 2027</td></tr>
           </tbody>
           <tfoot><tr id="e5tot"><td>Nombre de réalisations</td></tr></tfoot>
         </table>
@@ -533,8 +566,9 @@
         <div class="card reveal">
           <h3>Candidat</h3>
           <dl class="contact" style="display:grid;grid-template-columns:auto 1fr;gap:.6rem 1rem">
-            <dt style="font-family:var(--mono);color:var(--accent-2);font-size:.82rem">nom</dt><dd>Axel Dehan</dd>
+            <dt style="font-family:var(--mono);color:var(--accent-2);font-size:.82rem">nom</dt><dd>DEHAN Axel</dd>
             <dt style="font-family:var(--mono);color:var(--accent-2);font-size:.82rem">formation</dt><dd>BTS SIO — option SISR</dd>
+            <dt style="font-family:var(--mono);color:var(--accent-2);font-size:.82rem">centre</dt><dd>Campus La Châtaigneraie, Le Mesnil-Esnard</dd>
             <dt style="font-family:var(--mono);color:var(--accent-2);font-size:.82rem">session</dt><dd>2027</dd>
           </dl>
         </div>
