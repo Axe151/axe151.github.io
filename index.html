@@ -135,10 +135,24 @@
   @media (max-width:860px){.tools,.pc{grid-template-columns:1fr}}
 
   /* CERTIFS */
-  .certs{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
-  .cert{text-align:center}
-  .cert .ico{width:52px;height:52px;margin:0 auto .8rem;border-radius:12px;display:grid;place-items:center;font-family:var(--mono);font-weight:600;background:linear-gradient(135deg,rgba(217,72,15,.12),rgba(109,40,217,.12));border:1px solid var(--line)}
-  .cert p{color:var(--muted);font-size:.85rem}
+  .certs{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+  .cert{text-align:center;display:flex;flex-direction:column;align-items:center;gap:.35rem}
+  .cert .ico{width:64px;height:64px;margin:0 auto .5rem;border-radius:14px;display:grid;place-items:center;font-family:var(--mono);font-weight:600;font-size:.85rem;background:linear-gradient(135deg,rgba(217,72,15,.12),rgba(109,40,217,.12));border:1px solid var(--line)}
+  .cert .badge{width:64px;height:64px;border-radius:12px;margin-bottom:.5rem;object-fit:cover}
+  .cert p{color:var(--muted);font-size:.85rem;flex:1}
+  .cert-date{font-family:var(--mono);font-size:.74rem;color:var(--accent-2)}
+  .cert .more{font-size:.85rem;color:var(--accent);margin-top:.3rem}
+  .cert-btn{font:inherit;color:inherit;cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s}
+  .cert-btn:hover,.cert-btn:focus-visible{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 10px 30px rgba(16,24,40,.1);outline:none}
+  .cert-pending{opacity:.65}
+  .cert-pending .cert-date{color:var(--muted)}
+  #certModal{margin:auto;border:none;border-radius:var(--radius);padding:0;max-width:min(960px,94vw);width:100%;background:var(--card);color:var(--text);box-shadow:0 30px 80px rgba(16,24,40,.35)}
+  #certModal::backdrop{background:rgba(16,24,40,.6);backdrop-filter:blur(3px)}
+  .cm-head{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.8rem 1.1rem;border-bottom:1px solid var(--line)}
+  .cm-head div{display:flex;align-items:center;gap:1rem}
+  .cm-head a{font-size:.85rem;color:var(--accent-2)}
+  .cm-head button{background:var(--bg-2);border:1px solid var(--line);border-radius:8px;width:34px;height:34px;cursor:pointer;color:var(--text);font-size:1rem}
+  #certModalImg{display:block;width:100%;height:auto;max-height:78vh;object-fit:contain;background:#fff}
 
   /* E5 */
   .e5-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--card)}
@@ -169,7 +183,7 @@
   @media (max-width:860px){
     .hero,.cv-grid,.contact{grid-template-columns:1fr}
     .veille-grid{grid-template-columns:1fr}
-    .certs{grid-template-columns:repeat(2,1fr)}
+    .certs{grid-template-columns:1fr}
     nav ul{display:none;position:absolute;top:64px;right:1rem;flex-direction:column;background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:1rem 1.4rem;gap:.9rem}
     nav ul.open{display:flex}
     .burger{display:block}
@@ -407,11 +421,22 @@
         <span class="sec-num">04.</span><h2>Certifications</h2>
         <p>Parcours de certifications complémentaires (PCC).</p>
       </div>
-      <div class="certs" style="grid-template-columns:repeat(3,1fr)">
-        <div class="card cert reveal"><div class="ico">PIX</div><h4>PIX</h4><p>Compétences numériques</p></div>
-        <div class="card cert reveal"><div class="ico">MOOC</div><h4>SecNumacadémie</h4><p>ANSSI — fondamentaux de la cybersécurité</p></div>
-        <div class="card cert reveal"><div class="ico">CNIL</div><h4>Atelier RGPD</h4><p>CNIL — protection des données</p></div>
+      <h3 class="reveal">Certifications obligatoires</h3>
+      <div class="certs">
+        <button type="button" class="card cert cert-btn reveal" data-img="certifs/pix.webp" data-title="Certification Pix"><div class="ico">PIX</div><h4>Certification Pix</h4><p>Compétences numériques — niveau Avancé 1 (533 pix)</p><span class="cert-date">Décembre 2025</span><span class="more">Voir le certificat →</span></button>
+        <button type="button" class="card cert cert-btn reveal" data-img="certifs/anssi.webp" data-title="SecNumacadémie"><div class="ico">ANSSI</div><h4>SecNumacadémie</h4><p>ANSSI — MOOC sécurité du numérique, 4 modules validés à 100 %</p><span class="cert-date">Septembre 2025</span><span class="more">Voir le certificat →</span></button>
+        <button type="button" class="card cert cert-btn reveal" data-img="certifs/rgpd.webp" data-title="Atelier RGPD"><div class="ico">CNIL</div><h4>Atelier RGPD</h4><p>CNIL — protection des données personnelles, score 100 %</p><span class="cert-date">Mai 2025</span><span class="more">Voir le certificat →</span></button>
       </div>
+      <h3 class="reveal" style="margin-top:2.4rem">Certifications supplémentaires — Cisco Networking Academy</h3>
+      <div class="certs">
+        <button type="button" class="card cert cert-btn reveal" data-img="certifs/cisco-intro-cybersecurity.webp" data-title="Introduction to Cybersecurity"><img class="badge" src="certifs/badge-intro-cybersecurity.webp" alt="" width="64" height="64" loading="lazy"><h4>Introduction to Cybersecurity</h4><p>Menaces, chiffrement, réaction face à un incident · 6 h</p><span class="cert-date">Octobre 2026</span><span class="more">Voir le certificat →</span></button>
+        <button type="button" class="card cert cert-btn reveal" data-img="certifs/cisco-network-defense.webp" data-title="Network Defense"><img class="badge" src="certifs/badge-network-defense.webp" alt="" width="64" height="64" loading="lazy"><h4>Network Defense</h4><p>ACL, pare-feu, VPN, journaux et alertes · 27 h</p><span class="cert-date">Septembre 2026</span><span class="more">Voir le certificat →</span></button>
+        <div class="card cert cert-pending reveal"><img class="badge" src="certifs/badge-endpoint-security.webp" alt="" width="64" height="64" loading="lazy"><h4>Endpoint Security</h4><p>Protection des postes, gestion des incidents · 27 h</p><span class="cert-date">En cours</span></div>
+      </div>
+      <dialog id="certModal" aria-labelledby="certModalTitle">
+        <div class="cm-head"><h4 id="certModalTitle"></h4><div><a id="certModalOpen" href="#" target="_blank" rel="noopener">Ouvrir en grand ↗</a><button type="button" id="certModalClose" aria-label="Fermer">✕</button></div></div>
+        <img id="certModalImg" src="" alt="">
+      </dialog>
     </div>
   </section>
 
@@ -442,7 +467,7 @@
             <tr class="grp"><td colspan="7">Développement professionnel</td></tr>
             <tr data-c="3,6"><td>Portfolio en ligne (GitHub Pages)</td></tr>
             <tr data-c="6"><td>Veille technologique — les bases de données</td></tr>
-            <tr data-c="6"><td>Certifications PCC — Pix, ANSSI, RGPD</td></tr>
+            <tr data-c="6"><td>Certifications PCC — Pix, ANSSI, RGPD, Cisco</td></tr>
           </tbody>
           <tfoot><tr id="e5tot"><td>Nombre de réalisations</td></tr></tfoot>
         </table>
@@ -556,6 +581,18 @@
   });
   const trt = document.getElementById('e5tot');
   tot.forEach(n => { const td = document.createElement('td'); td.textContent = n; trt.appendChild(td); });
+
+  // Certificats cliquables
+  const cm = document.getElementById('certModal');
+  if (cm) {
+    const img = document.getElementById('certModalImg'), ttl = document.getElementById('certModalTitle'), open = document.getElementById('certModalOpen');
+    document.querySelectorAll('.cert-btn').forEach(b => b.addEventListener('click', () => {
+      img.src = b.dataset.img; img.alt = 'Certificat — ' + b.dataset.title; ttl.textContent = b.dataset.title; open.href = b.dataset.img;
+      cm.showModal();
+    }));
+    document.getElementById('certModalClose').addEventListener('click', () => cm.close());
+    cm.addEventListener('click', e => { if (e.target === cm) cm.close(); });
+  }
 
   // Menu mobile
   const burger = document.querySelector('.burger'), menu = document.getElementById('menu');
