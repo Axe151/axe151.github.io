@@ -116,6 +116,24 @@
   .veille-grid time a{color:var(--accent-2)}
   .vitem{transition:border-color .2s}.vitem:hover{border-color:var(--accent-2)}
 
+  /* OUTILS DE VEILLE */
+  .tools-intro{color:var(--muted);margin:-.4rem 0 1.2rem}
+  .tools{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
+  .tool{display:flex;flex-direction:column;gap:.8rem;transition:border-color .2s}
+  .tool:hover{border-color:var(--accent-2)}
+  .tool-head{display:flex;align-items:center;gap:.9rem}
+  .tool-ico{width:46px;height:46px;flex:none;border-radius:12px;display:grid;place-items:center;font-size:1.4rem;background:var(--bg-2);border:1px solid var(--line)}
+  .tool h4{font-size:1.1rem;line-height:1.2}
+  .tool > p{color:var(--muted);font-size:.92rem}
+  .pc{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+  .pc b{display:block;font-family:var(--mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.35rem}
+  .pros b{color:var(--accent-2)} .cons b{color:var(--accent)}
+  .pc ul{list-style:none;display:grid;gap:.3rem;font-size:.86rem}
+  .pc li{padding-left:1.1rem;position:relative}
+  .pros li::before{content:"+";position:absolute;left:0;color:var(--accent-2);font-family:var(--mono);font-weight:600}
+  .cons li::before{content:"−";position:absolute;left:0;color:var(--accent);font-family:var(--mono);font-weight:600}
+  @media (max-width:860px){.tools,.pc{grid-template-columns:1fr}}
+
   /* CERTIFS */
   .certs{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
   .cert{text-align:center}
@@ -333,12 +351,36 @@
         <span class="sec-num">03.</span><h2>Veille technologique</h2>
         <p>Thème : <strong style="color:var(--text)">les bases de données</strong>. Actualités, innovations et fuites de données, suivies mois par mois de février à août 2025.</p>
       </div>
+      <h3 class="reveal">Outils de veille</h3>
+      <p class="tools-intro reveal">Les outils que j'utilise pour ma veille technologique et concurrentielle.</p>
+      <div class="tools">
+        <article class="card tool reveal">
+          <div class="tool-head"><span class="tool-ico" aria-hidden="true">📰</span><div><h4>Feedly</h4><span class="axe">// Agrégateur de flux RSS</span></div></div>
+          <p>Un agrégateur de flux RSS qui permet de suivre des blogs, des sites d'actualités, ou d'autres sources d'information en temps réel. Idéal pour la veille concurrentielle et technologique.</p>
+          <div class="pc"><div class="pros"><b>Avantages</b><ul><li>Interface simple et personnalisable</li><li>Idéal pour suivre des flux RSS</li><li>Intégration avec d'autres outils</li><li>Organisation par catégories</li></ul></div><div class="cons"><b>Inconvénients</b><ul><li>Pas d'analyse approfondie des tendances</li><li>Pas de suivi de l'engagement</li><li>Fonctionnalités limitées sans abonnement</li></ul></div></div>
+        </article>
+        <article class="card tool reveal">
+          <div class="tool-head"><span class="tool-ico" aria-hidden="true">📑</span><div><h4>Scoop.it</h4><span class="axe">// Curation de contenu</span></div></div>
+          <p>Outil de curation de contenu permettant de créer des pages thématiques et de suivre des informations liées à mes centres d'intérêt.</p>
+          <div class="pc"><div class="pros"><b>Avantages</b><ul><li>Outil facile pour la curation de contenu</li><li>Fonctionnalités collaboratives</li><li>Analyse des performances</li><li>Partage social intégré</li></ul></div><div class="cons"><b>Inconvénients</b><ul><li>Moins utile pour la surveillance en temps réel</li><li>Version gratuite limitée</li><li>Pas de suivi détaillé des réseaux sociaux</li></ul></div></div>
+        </article>
+        <article class="card tool reveal">
+          <div class="tool-head"><span class="tool-ico" aria-hidden="true">🔔</span><div><h4>Mention</h4><span class="axe">// Surveillance des mentions</span></div></div>
+          <p>Outil de surveillance des mentions en ligne. Il suit les mentions d'une marque, d'un produit ou d'un sujet particulier sur des sites web, réseaux sociaux, forums, blogs, etc.</p>
+          <div class="pc"><div class="pros"><b>Avantages</b><ul><li>Surveillance en temps réel des mentions</li><li>Analyse de sentiment</li><li>Alertes instantanées</li><li>Couverture des réseaux sociaux</li></ul></div><div class="cons"><b>Inconvénients</b><ul><li>Coût élevé</li><li>Fonctionnalités limitées en version gratuite</li><li>Configuration parfois complexe</li></ul></div></div>
+        </article>
+        <article class="card tool reveal">
+          <div class="tool-head"><span class="tool-ico" aria-hidden="true">📊</span><div><h4>Talkwalker</h4><span class="axe">// Analyse de réputation</span></div></div>
+          <p>Permet de suivre des mentions sur les réseaux sociaux, mais aussi de réaliser une veille sur des blogs, forums et sites web. Outil puissant pour l'analyse de la réputation en ligne.</p>
+          <div class="pc"><div class="pros"><b>Avantages</b><ul><li>Analyse approfondie des mentions</li><li>Couverture étendue</li><li>Analyse visuelle des médias</li><li>Rapports personnalisés</li></ul></div><div class="cons"><b>Inconvénients</b><ul><li>Coût élevé</li><li>Complexité pour les nouveaux utilisateurs</li><li>Configuration longue</li></ul></div></div>
+        </article>
+      </div>
+      <h3 class="reveal" style="margin-top:2.6rem">Articles suivis</h3>
       <div class="filters reveal" role="group" aria-label="Filtrer la veille par mois" id="vfilters">
         <button class="on" data-m="all">Tout</button>
         <button data-m="02">Fév.</button><button data-m="03">Mars</button><button data-m="04">Avril</button>
         <button data-m="05">Mai</button><button data-m="06">Juin</button><button data-m="07">Juil.</button><button data-m="08">Août</button>
       </div>
-      <div class="card reveal" style="margin-bottom:1.4rem"><h3>Outils de veille</h3><div class="chips"><span class="chip">Feedly — flux RSS</span><span class="chip">Scoop.it — curation d'articles</span><span class="chip">Mention — suivi de mentions</span><span class="chip">Talkwalker — réseaux sociaux &amp; réputation</span></div></div>
       <div class="veille-grid" id="vgrid">
         <article class="card vitem" data-m="02"><span class="axe">// Fuite de données</span><h4>DeepSeek : historiques de chat exposés</h4><p>Une base non protégée de la start-up DeepSeek (journaux, conversations, clés API) était accessible sans mot de passe. Découverte par Wiz, corrigée en moins d'une heure.</p><time>02/02/2025 · L'Usine Digitale</time></article>
         <article class="card vitem" data-m="02"><span class="axe">// Outil</span><h4>ProxySQL, l'accélérateur open source</h4><p>Un proxy entre les applications et les bases SQL (MySQL, PostgreSQL, MariaDB) : optimisation des requêtes, répartition de charge, cache, pare-feu et monitoring.</p><time>20/02/2025 · LeMagIT</time></article>
